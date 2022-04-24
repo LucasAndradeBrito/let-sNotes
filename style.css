@@ -37,10 +37,11 @@ body {
   position: absolute;
   top: 0;
   bottom: 0;
+  margin: 0 10px 0 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 400px;
+  min-width: 400px;
   opacity: 1;
   transition: all 500ms;
 }
@@ -52,10 +53,18 @@ body {
 .msgContent {
   padding: 15px;
   width: 100%;
-  height: 450px;
   background-color: #203047;
   border-radius: 15px;
   color: white;
+}
+
+.divForm {
+  opacity: 1;
+  transition: all 300ms;
+}
+
+.divForm.fadeOut {
+  opacity: 0;
 }
 
 .titleLogin {
@@ -94,12 +103,14 @@ body {
   left: 100px;
   margin-top: 10px;
   background-color: lightseagreen;
+  appearance: none;
 }
 
 #color2 {
   left: 200px;
   bottom: 40px;
   background-color: rgb(173, 32, 178);
+  appearance: none;
 }
 
 #color1:hover,
@@ -111,10 +122,33 @@ body {
   align-self: center;
 }
 
+/* Alerta da primeira tela */
+
+.alertBox {
+  display: none;
+  flex-flow: column;
+  margin: 20px 0 20px 0;
+  max-width: 500px;
+  font-weight: 500;
+  font-size: 1.2rem;
+  text-align: center;
+  opacity: 1;
+  transition: all 300ms;
+}
+
+.alertBox.fadeOut {
+  opacity: 0;
+}
+
+#alertBtn {
+  align-self: center;
+  margin: 15px 0 0 0;
+}
+
 /* Cabeçalho */
 
-header {
-  display: none;
+.header {
+  display: flex;
   justify-content: center;
   align-items: center;
   padding: 5px 15px;
@@ -150,10 +184,8 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 15px 0 15px;
-  background-color: lightseagreen;
-  width: 35px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   font-size: 1.5rem;
   font-weight: 500;
@@ -175,7 +207,6 @@ header {
 /* Desenvolvimento */
 
 .container {
-  display: none;
   position: relative;
   align-self: center;
   width: 80vw;
@@ -240,7 +271,8 @@ header {
 }
 
 #btnAdd,
-#enjoyBtn {
+#enjoyBtn,
+#alertBtn {
   padding: 5px;
   width: 100px;
   background-color: #f5d01f;
@@ -251,9 +283,11 @@ header {
 }
 
 #btnAdd:hover,
-#enjoyBtn:hover {
+#enjoyBtn:hover,
+#alertBtn:hover {
   cursor: pointer;
   background-color: #f5aa1f;
+  color: white;
 }
 
 /* Tarefas */
