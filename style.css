@@ -76,15 +76,17 @@ body {
   flex-flow: column;
 }
 
-.pLogin {
+.labelLogin {
   margin-top: 20px;
 }
 
 #name,
 #surName {
   margin-top: 10px;
-  padding: 2.5px;
+  padding: 5px;
   height: 25px;
+  border: none;
+  border-radius: 2.5px;
   font-weight: 600;
   font-size: 1rem;
 }
@@ -264,6 +266,7 @@ body {
 
 #inputTask {
   margin: 0 25px 0 0;
+  padding: 10px;
   width: calc(80vw - 125px);
   height: 30px;
   border: none;
@@ -278,8 +281,8 @@ body {
   background-color: #f5d01f;
   border: none;
   border-radius: 5px;
-  color: #000000;
-  transition: all 500ms;
+  color: #203047;
+  transition: all 400ms;
 }
 
 #btnAdd:hover,
@@ -292,5 +295,39 @@ body {
 
 /* Tarefas */
 
-/* .tasks {
-} */
+.tasks {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  padding: 10px;
+}
+
+.divTask {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  margin: 0 0 10px 0;
+  padding: 5px;
+  border-bottom: 1px solid #203047;
+}
+
+.labelTask {
+  margin: 0 0 0 5px;
+  color: #203047;
+}
+
+#removeTask {
+  margin: 0 0 5px auto;
+  padding: 0 5px 0 5px;
+  background-color: #ff0000;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 0.7rem;
+  color: white;
+  transition: all 300ms;
+}
+
+#removeTask:hover {
+  background-color: #ca0000;
+}

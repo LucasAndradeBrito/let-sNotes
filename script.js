@@ -1,5 +1,5 @@
 let msgBox = document.querySelector(".msgBox");
-var checkColor = { color: 0 };
+let checkColor = { color: 0 };
 let header = document.querySelector(".header");
 let main = document.querySelector(".container");
 
@@ -13,11 +13,11 @@ onload = () => {
       </div>
       <div class="divForm"> 
           <form class="formLogin">
-              <p class="pLogin">Informe seu nome:</p>
+              <label class="labelLogin">Informe seu nome:</label>
               <input id="name" type="text" name="name" maxlength="15">
-              <p class="pLogin">Informe seu sobrenome:</p>
+              <label class="labelLogin">Informe seu sobrenome:</label>
               <input id="surName" type="text" name="surName" maxlength="15" value="">
-              <p class="pLogin">Escolha a cor do perfil:</p>
+              <label class="labelLogin">Escolha a cor do perfil:</label>
               <input id="color1" onclick = "btnColor1()" onclick ="btnCheck()" class="pflPhoto" type="radio" value="">
               <input id="color2" onclick = "btnColor2()" class="pflPhoto" type="radio" value="">
               <input id="enjoyBtn" onclick = "btnLogin()" type="button" value="Entrar">
@@ -210,7 +210,7 @@ function btnLogin() {
         <h2>Minhas Tarefas</h2>
         <form class="form">
           <input id="inputTask" type="text" name="task">
-          <input id="btnAdd" type="button" value="Adicionar">
+          <input id="btnAdd" onclick="addTask()" type="button" value="Adicionar">
         </form>
       </section>
       <section class="tasks"></section>`;
@@ -233,3 +233,34 @@ function btnReturn() {
 }
 
 //Seção minhas tarefas
+
+function addTask() {
+  let inputTask = document.querySelector("#inputTask");
+  let spaceTask = document.querySelector(".tasks");
+
+  if (inputTask.value != "") {
+    spaceTask.innerHTML += `
+    <div class="divTask">
+      <input class="adderTask" onclick="checkbox()" type="checkbox" name="task" >
+      <label class="labelTask">${inputTask.value}</label>
+      <input id="removeTask" onclick="removeTask()" type="button" value="Remove" >
+    </div>
+    `;
+    inputTask.value = "";
+  }
+}
+
+function checkbox() {
+  let labelTask = document.querySelector(".labelTask");
+  let check = document.querySelector(".adderTask");
+
+  if (check.checked) {
+    labelTask.style.textDecoration = "line-through";
+    // console.log("Check");
+  } else {
+    labelTask.style.textDecoration = "none";
+    // console.log("UnCheck");
+  }
+}
+
+function removeTask() {}
