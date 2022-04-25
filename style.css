@@ -374,7 +374,7 @@ body {
   }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 350px) {
   .title {
     flex-flow: column;
     justify-content: center;
