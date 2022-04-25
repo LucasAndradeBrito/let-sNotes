@@ -25,7 +25,7 @@ p {
 body {
   position: relative;
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column;
   align-items: center;
   background-color: #e7e7e7;
   height: 100vh;
@@ -154,7 +154,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 5px 15px;
-  width: 100vw;
+  width: 100%;
   box-shadow: 0 2px 15px #203047;
   background-color: #203047;
 }
@@ -189,14 +189,15 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 500;
 }
 
 .nameProfile {
   display: flex;
   flex-flow: column;
-  margin: -14px 0 0 10px;
+  justify-content: center;
+  margin: -14px 0 0 5px;
   font-size: 0.8rem;
   font-weight: 300;
 }
@@ -206,10 +207,13 @@ body {
   font-weight: 600;
 }
 
+#nameSmall {
+  margin-left: 5px;
+}
+
 /* Desenvolvimento */
 
 .container {
-  position: relative;
   align-self: center;
   width: 80vw;
   padding: 50px 15px;
@@ -267,7 +271,7 @@ body {
 #inputTask {
   margin: 0 25px 0 0;
   padding: 10px;
-  width: calc(80vw - 125px);
+  width: calc(100% - 125px);
   height: 30px;
   border: none;
   border-radius: 5px;
@@ -305,20 +309,34 @@ body {
 .divTask {
   display: flex;
   flex-flow: row;
-  justify-content: center;
+  justify-content: space-between;
   margin: 0 0 10px 0;
   padding: 5px;
+  width: 100%;
   border-bottom: 1px solid #203047;
+  white-space: normal;
 }
 
-.labelTask {
-  margin: 0 0 0 5px;
+.divAdderTask {
+  display: flex;
+}
+
+.adderTask {
+  /* display: none; */
+}
+
+.pTask {
+  margin: 0 0 0 10px;
+  word-wrap: break-word;
   color: #203047;
 }
 
 #removeTask {
-  margin: 0 0 5px auto;
+  align-self: center;
+  margin: 0 0 5px 5px;
   padding: 0 5px 0 5px;
+  width: 55px;
+  height: 20px;
   background-color: #ff0000;
   border: none;
   border-radius: 5px;
@@ -330,4 +348,22 @@ body {
 
 #removeTask:hover {
   background-color: #ca0000;
+}
+
+/* Media queries */
+
+@media (max-width: 850px) {
+  .container {
+    width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .inspireMsg {
+    flex-flow: column;
+    align-items: center;
+  }
+  .secondMsg {
+    margin-left: 0;
+  }
 }

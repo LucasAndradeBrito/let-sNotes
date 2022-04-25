@@ -169,7 +169,7 @@ function btnLogin() {
             <p id="name">${
               name.value[0].toUpperCase() + name.value.substring(1)
             } ${surName.value[0].toUpperCase() + surName.value.substring(1)}</p>
-            <p><small>Bem vindo(a) ao Let'sNotes</small></p>
+            <p id="nameSmall"><small>Bem vindo(a) ao Let'sNotes</small></p>
           </div>
         </div>
       </div>`;
@@ -209,7 +209,7 @@ function btnLogin() {
       <section class="myTasks">
         <h2>Minhas Tarefas</h2>
         <form class="form">
-          <input id="inputTask" type="text" name="task">
+          <input id="inputTask" type="text" name="task" placeholder="Digite uma tarefa">
           <input id="btnAdd" onclick="addTask()" type="button" value="Adicionar">
         </form>
       </section>
@@ -241,9 +241,11 @@ function addTask() {
   if (inputTask.value != "") {
     spaceTask.innerHTML += `
     <div class="divTask">
-      <input class="adderTask" onclick="checkbox()" type="checkbox" name="task" >
-      <label class="labelTask">${inputTask.value}</label>
-      <input id="removeTask" onclick="removeTask()" type="button" value="Remove" >
+      <div class="divAdderTask">
+        <input class="adderTask" onclick="checkbox()" type="checkbox" name="task" >
+        <p class="pTask">${inputTask.value}</p>
+      </div>
+        <input id="removeTask" onclick="removeTask()" type="button" value="Remove" >
     </div>
     `;
     inputTask.value = "";
@@ -251,7 +253,7 @@ function addTask() {
 }
 
 function checkbox() {
-  let labelTask = document.querySelector(".labelTask");
+  let labelTask = document.querySelector(".pTask");
   let check = document.querySelector(".adderTask");
 
   if (check.checked) {
