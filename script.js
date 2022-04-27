@@ -2,6 +2,8 @@ let msgBox = document.querySelector(".msgBox");
 let checkColor = { color: 0 };
 let header = document.querySelector(".header");
 let main = document.querySelector(".container");
+let array_de_tarefas = [];
+let objeto_task = {};
 
 // Quando a pagina carregar
 
@@ -239,30 +241,64 @@ function addTask() {
   let spaceTask = document.querySelector(".tasks");
 
   if (inputTask.value != "") {
-    spaceTask.innerHTML += `
-    <div class="divTask">
+    objeto_tarefa = {
+      id: Math.random(),
+      conteudo: inputTask.value,
+      realizado: false,
+    };
+  }
+
+  array_de_tarefas.push(objeto_tarefa);
+
+  spaceTask.innerHTML += `
+    <div id="${objeto_tarefa.id}" class="divTask">
       <div class="divAdderTask">
-        <input class="adderTask" onclick="checkbox()" type="checkbox" name="task" >
-        <p class="pTask">${inputTask.value}</p>
+        <input class="adderTask" onclick="checkbox(${objeto_tarefa.id})" type="checkbox" name="task" >
+        <p class="pTask">${objeto_tarefa.conteudo}</p>
       </div>
-        <input id="removeTask" onclick="removeTask()" type="button" value="Remove" >
+        <input id="removeTask" onclick="removeTask(${objeto_tarefa.id})" type="button" value="Remove" >
     </div>
     `;
-    inputTask.value = "";
+  inputTask.value = "";
+}
+
+function checkbox(id) {
+  let spaceTask = document.querySelector(".tasks");
+
+  spaceTask.innerHTML = "";
+
+  for (let i = 0; i < array_de_tarefas.length; i++) {
+    if (array_de_tarefas[i].id == id) {
+      array_de_tarefas[i].realizado = !array_de_tarefas[i].realizado;
+    }
+
+    spaceTask.innerHTML += `
+    <div id="${array_de_tarefas[i].id}" class="divTask">
+      <div class="divAdderTask">
+        <input class="adderTask" onclick="checkbox(${
+          array_de_tarefas[i].id
+        })" type="checkbox" name="task" ${
+      array_de_tarefas[i].realizado ? "checked" : ""
+    }>
+        <p class="pTask" style="text-decoration: ${
+          array_de_tarefas[i].realizado ? "line-through" : "initial"
+        };">${array_de_tarefas[i].conteudo}</p>
+      </div>
+        <input id="removeTask" onclick="removeTask(${
+          array_de_tarefas[i].id
+        })" type="button" value="Remove" >
+    </div>
+    `;
   }
 }
 
-function checkbox() {
-  let labelTask = document.querySelector(".pTask");
-  let check = document.querySelector(".adderTask");
+function removeTask(id) {
+  let div = document.getElementById(`${id}`);
 
-  if (check.checked) {
-    labelTask.style.textDecoration = "line-through";
-    // console.log("Check");
-  } else {
-    labelTask.style.textDecoration = "none";
-    // console.log("UnCheck");
+  for (let i = 0; i < array_de_tarefas.length; i++) {
+    if (array_de_tarefas[i].id == id) {
+      div.innerHTML = null;
+      div.style.display = "none";
+    }
   }
 }
-
-function removeTask() {}
